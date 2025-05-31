@@ -442,7 +442,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     }
     
     public void imprimeNe(){
-        embaralhos.setText("O número de embaralhamentos foi: "+ne);
+        embaralhos.setText("O número de re-embaralhamentos foi: "+ne);
     }
     
     
