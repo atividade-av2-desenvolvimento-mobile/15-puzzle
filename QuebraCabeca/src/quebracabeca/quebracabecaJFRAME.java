@@ -19,6 +19,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     Integer[] listacerta = new Integer[16];
     int nj=0;
     
+    
+    
     JButton botao2 = new JButton(); //os botões (JButton) são objetos privados, instâncias do javax.swing
     
     
@@ -57,7 +59,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         b14 = new javax.swing.JButton();
         b15 = new javax.swing.JButton();
         b16 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jogadas1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -179,9 +181,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         });
         getContentPane().add(b16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 80, 60));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("texto");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        jogadas1.setText("jLabel1");
+        getContentPane().add(jogadas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -354,6 +355,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             }
             
         }
+        
+        jogadas();
             
     }
     public void embaralhar(){
@@ -388,13 +391,14 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         b15.setText(lista.get(14) != null ? lista.get(14).toString() : "");
         b16.setText(lista.get(15) != null ? lista.get(15).toString() : "");
         
-
+        nj = 0;
+        jogadas();
         
     }
     
     public void verificarVitoria(){
         Boolean verifica = true;
-        for(int i = 1; i < 17;){
+        for(int i = 1; i < 16;){
             String si;
             si = Integer.toString(i);
             if(idBotao(i).getText().equals(si)){
@@ -407,13 +411,16 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             }
         }
         if(verifica == true && nj>0){
-            
+            JOptionPane.showMessageDialog(null, "Parabéns você completou o puzzle","Resultado",1);
+            embaralhar();
         }
         
-        
+       jogadas(); 
     }
     
-    
+    public void jogadas(){
+        jogadas1.setText("O número de jogadas foi: "+nj);
+    }
     
     /**
      * @param args the command line arguments
@@ -467,6 +474,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     private javax.swing.JButton b7;
     private javax.swing.JButton b8;
     private javax.swing.JButton b9;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jogadas1;
     // End of variables declaration//GEN-END:variables
+    
+
 }
