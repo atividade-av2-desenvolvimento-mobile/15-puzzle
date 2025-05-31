@@ -17,7 +17,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     
     ArrayList<Integer> lista = new ArrayList<>();
     Integer[] listacerta = new Integer[16];
-    int nj=0;
+    int nj=0; //numero de jogadas
+    int ne =0; //numero de embaralhamentos
     
     
     
@@ -60,6 +61,10 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         b15 = new javax.swing.JButton();
         b16 = new javax.swing.JButton();
         jogadas1 = new javax.swing.JLabel();
+        embaralhos = new javax.swing.JLabel();
+        qinversoes = new javax.swing.JLabel();
+        nLinha = new javax.swing.JLabel();
+        lateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -181,8 +186,17 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         });
         getContentPane().add(b16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 80, 60));
 
-        jogadas1.setText("jLabel1");
-        getContentPane().add(jogadas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
+        jogadas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jogadas1.setText("jogadas1");
+        getContentPane().add(jogadas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, -1));
+
+        embaralhos.setText("embaralho");
+        getContentPane().add(embaralhos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 300, -1));
+        embaralhos.getAccessibleContext().setAccessibleName("jembaralhos");
+
+        getContentPane().add(qinversoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 280, 20));
+        getContentPane().add(nLinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 300, 20));
+        getContentPane().add(lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 50, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,16 +215,6 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         // TODO add your handling code here:
         mover(b2,2);
     }//GEN-LAST:event_b2ActionPerformed
-
-    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
-        // TODO add your handling code here:
-        mover(b3,3);
-    }//GEN-LAST:event_b3ActionPerformed
-
-    private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
-        // TODO add your handling code here:
-        mover(b4,4);
-    }//GEN-LAST:event_b4ActionPerformed
 
     private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
         // TODO add your handling code here:
@@ -271,6 +275,16 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         // TODO add your handling code here:
         mover(b16,16);
     }//GEN-LAST:event_b16ActionPerformed
+
+    private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
+        // TODO add your handling code here:
+        mover(b4,4);
+    }//GEN-LAST:event_b4ActionPerformed
+
+    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
+        // TODO add your handling code here:
+        mover(b3,3);
+    }//GEN-LAST:event_b3ActionPerformed
     
     public JButton idBotao(int p){
         switch(p){
@@ -356,7 +370,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             
         }
         
-        jogadas();
+        imprimeNj();
+        verificarVitoria();
             
     }
     public void embaralhar(){
@@ -392,22 +407,24 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         b16.setText(lista.get(15) != null ? lista.get(15).toString() : "");
         
         nj = 0;
-        jogadas();
+        imprimeNj();
+        impossivel();
+        
+       
         
     }
     
     public void verificarVitoria(){
-        Boolean verifica = true;
-        for(int i = 1; i < 16;){
+        Boolean verifica = true; // valor para verificação de vitoria
+        for(int i = 1; i < 16;i++){
             String si;
             si = Integer.toString(i);
             if(idBotao(i).getText().equals(si)){
                 verifica = true;
             }else if(!idBotao(i).getText().equals(si)){
                 verifica = false;
-            }
-            if(verifica == false){
                 break;
+                
             }
         }
         if(verifica == true && nj>0){
@@ -415,13 +432,64 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             embaralhar();
         }
         
-       jogadas(); 
+      
     }
     
-    public void jogadas(){
+    public void imprimeNj(){
         jogadas1.setText("O número de jogadas foi: "+nj);
+        
+        
     }
     
+    public void imprimeNe(){
+        embaralhos.setText("O número de embaralhamentos foi: "+ne);
+    }
+    
+    
+    public void impossivel(){
+        int ninversoes = 0; //numero de inversões
+        int pvazia=0; //posição do botao vazio no começo do jogo
+        int nlinha = 0; //numero da linha onde fica o botão vazio no começo do jogo
+        int verifica = 0; // valor usado para verificar condição de possibildiade de vitoria
+        for(int i = 0; i < 16; i++){
+            for(int j =i +1; j < 16; j++){
+                if(lista.get(j) != null && lista.get(i) != null){
+                    if(lista.get(i) > lista.get(j)){
+                     ninversoes +=1;
+                    } 
+                }else if(lista.get(j) == null){
+                    pvazia = j;
+                }
+                    
+            }
+        }
+        qinversoes.setText("Quantidade de inversões: "+ninversoes);
+        
+        if(pvazia >=0 && pvazia <= 3){
+            nlinha = 4;
+        }
+        if(pvazia >=4 && pvazia <= 7){
+            nlinha = 3;
+        }
+        if(pvazia >=8 && pvazia <= 11){
+            nlinha = 2;
+        }
+        if(pvazia >=12 && pvazia <= 15){
+            nlinha = 1;
+        }
+        nLinha.setText("Número invertido da linha com a casa vazia: "+nlinha);
+        verifica = ninversoes+nlinha;
+        if(verifica%2 ==0){
+            embaralhar();
+            ne ++;
+        }
+        
+        imprimeNe();
+        
+        
+        
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -448,11 +516,11 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             java.util.logging.Logger.getLogger(quebracabecaJFRAME.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new quebracabecaJFRAME().setVisible(true);
+                
             }
         });
     }
@@ -474,7 +542,11 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     private javax.swing.JButton b7;
     private javax.swing.JButton b8;
     private javax.swing.JButton b9;
+    private javax.swing.JLabel embaralhos;
     private javax.swing.JLabel jogadas1;
+    private javax.swing.JLabel lateral;
+    private javax.swing.JLabel nLinha;
+    private javax.swing.JLabel qinversoes;
     // End of variables declaration//GEN-END:variables
     
 
