@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.util.Timer;
 
 /**
  *
@@ -19,6 +20,8 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     Integer[] listacerta = new Integer[16];
     int nj=0; //numero de jogadas
     int ne =0; //numero de embaralhamentos
+    int nt = 0; //numero de tentativas
+    
     
     
     
@@ -65,6 +68,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         qinversoes = new javax.swing.JLabel();
         nLinha = new javax.swing.JLabel();
         lateral = new javax.swing.JLabel();
+        timer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,124 +83,130 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
                 b1ActionPerformed(evt);
             }
         });
-        getContentPane().add(b1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 80, 60));
+        getContentPane().add(b1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 80, 60));
 
         b2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b2ActionPerformed(evt);
             }
         });
-        getContentPane().add(b2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 80, 60));
+        getContentPane().add(b2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 80, 60));
 
         b3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b3ActionPerformed(evt);
             }
         });
-        getContentPane().add(b3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 80, 60));
+        getContentPane().add(b3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 80, 60));
 
         b4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b4ActionPerformed(evt);
             }
         });
-        getContentPane().add(b4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 80, 60));
+        getContentPane().add(b4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 80, 60));
 
         b5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b5ActionPerformed(evt);
             }
         });
-        getContentPane().add(b5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 80, 60));
+        getContentPane().add(b5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 80, 60));
 
         b6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b6ActionPerformed(evt);
             }
         });
-        getContentPane().add(b6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 80, 60));
+        getContentPane().add(b6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 80, 60));
 
         b7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b7ActionPerformed(evt);
             }
         });
-        getContentPane().add(b7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 80, 60));
+        getContentPane().add(b7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 80, 60));
 
         b8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b8ActionPerformed(evt);
             }
         });
-        getContentPane().add(b8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, 60));
+        getContentPane().add(b8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 80, 60));
 
         b9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b9ActionPerformed(evt);
             }
         });
-        getContentPane().add(b9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 80, 60));
+        getContentPane().add(b9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 80, 60));
 
         b10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b10ActionPerformed(evt);
             }
         });
-        getContentPane().add(b10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 80, 60));
+        getContentPane().add(b10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 80, 60));
 
         b11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b11ActionPerformed(evt);
             }
         });
-        getContentPane().add(b11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 80, 60));
+        getContentPane().add(b11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 80, 60));
 
         b12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b12ActionPerformed(evt);
             }
         });
-        getContentPane().add(b12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 80, 60));
+        getContentPane().add(b12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 80, 60));
 
         b13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b13ActionPerformed(evt);
             }
         });
-        getContentPane().add(b13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 80, 60));
+        getContentPane().add(b13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 80, 60));
 
         b14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b14ActionPerformed(evt);
             }
         });
-        getContentPane().add(b14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 80, 60));
+        getContentPane().add(b14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 80, 60));
 
         b15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b15ActionPerformed(evt);
             }
         });
-        getContentPane().add(b15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 80, 60));
+        getContentPane().add(b15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 80, 60));
 
         b16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b16ActionPerformed(evt);
             }
         });
-        getContentPane().add(b16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 80, 60));
+        getContentPane().add(b16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 80, 60));
 
         jogadas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jogadas1.setText("jogadas1");
-        getContentPane().add(jogadas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, -1));
+        getContentPane().add(jogadas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 190, -1));
 
         embaralhos.setText("embaralho");
-        getContentPane().add(embaralhos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 300, -1));
+        getContentPane().add(embaralhos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 300, -1));
         embaralhos.getAccessibleContext().setAccessibleName("jembaralhos");
 
-        getContentPane().add(qinversoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 280, 20));
-        getContentPane().add(nLinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 300, 20));
-        getContentPane().add(lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 50, 390));
+        qinversoes.setText("inversoes");
+        getContentPane().add(qinversoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 280, 20));
+
+        nLinha.setText("linha");
+        getContentPane().add(nLinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 300, 20));
+        getContentPane().add(lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, 390));
+
+        timer.setText("timer");
+        getContentPane().add(timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 10, 300, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -422,8 +432,11 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
             if(idBotao(i).getText().equals(si)){
                 verifica = true;
             }else if(!idBotao(i).getText().equals(si)){
+                //nt++;
                 verifica = false;
+                //lateral.setText(""+nt);
                 break;
+                
                 
             }
         }
@@ -443,6 +456,10 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     
     public void imprimeNe(){
         embaralhos.setText("O número de re-embaralhamentos foi: "+ne);
+    }
+    
+    public void imprimeTempo(){
+        timer.setText("timer: "+timer);
     }
     
     
@@ -520,7 +537,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new quebracabecaJFRAME().setVisible(true);
-                
+                Timer timer = new Timer();
             }
         });
     }
@@ -547,6 +564,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     private javax.swing.JLabel lateral;
     private javax.swing.JLabel nLinha;
     private javax.swing.JLabel qinversoes;
+    private javax.swing.JLabel timer;
     // End of variables declaration//GEN-END:variables
     
 
