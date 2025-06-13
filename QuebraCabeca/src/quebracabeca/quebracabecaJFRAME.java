@@ -389,49 +389,81 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
         verificarVitoria(); //a cada movimentação chama a função para veirificar se as condições de vitória foram atingidas
             
     }
-    public void embaralhar(){
-        //limpando a lista
-        lista.clear();
+    public void embaralhar(){ //função do tipo void dedicada à embaralhar os valores da lista
         
-        //adicionando 15 numeros ao array list
-        for (int i = 1; i <= 15; i++){
-            lista.add(i);
+        lista.clear();//limpando a lista
+        
+        
+        for (int i = 1; i <= 15; i++){//adicionando 15 numeros ao array list
+            lista.add(i); //adiciona o número i na lista até o 15
         }
         
-        lista.add(null);
+        lista.add(null); // adiciona um valor nulo
         
-        Collections.shuffle(lista);
+        Collections.shuffle(lista); //usa o método collections.shuffle para embaralhar os itens da lista
         
     
         
-        b1.setText (lista.get(0) != null ? lista.get(0).toString() : "");
-        b2.setText (lista.get(1) != null ? lista.get(1).toString() : "");
-        b3.setText (lista.get(2) != null ? lista.get(2).toString() : "");
-        b4.setText (lista.get(3) != null ? lista.get(3).toString() : "");
-        b5.setText (lista.get(4) != null ? lista.get(4).toString() : "");
-        b6.setText (lista.get(5) != null ? lista.get(5).toString() : "");
-        b7.setText (lista.get(6) != null ? lista.get(6).toString() : "");
-        b8.setText (lista.get(7) != null ? lista.get(7).toString() : "");
-        b9.setText (lista.get(8) != null ? lista.get(8).toString() : "");
-        b10.setText(lista.get(9) != null ? lista.get(9).toString() : "");
-        b11.setText(lista.get(10) != null ? lista.get(10).toString() : "");
-        b12.setText(lista.get(11) != null ? lista.get(11).toString() : "");
-        b13.setText(lista.get(12) != null ? lista.get(12).toString() : "");
-        b14.setText(lista.get(13) != null ? lista.get(13).toString() : "");
-        b15.setText(lista.get(14) != null ? lista.get(14).toString() : "");
-        b16.setText(lista.get(15) != null ? lista.get(15).toString() : "");
+        b1.setText (lista.get(0) != null ? lista.get(0).toString() : ""); /*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b2.setText (lista.get(1) != null ? lista.get(1).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b3.setText (lista.get(2) != null ? lista.get(2).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b4.setText (lista.get(3) != null ? lista.get(3).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b5.setText (lista.get(4) != null ? lista.get(4).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b6.setText (lista.get(5) != null ? lista.get(5).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b7.setText (lista.get(6) != null ? lista.get(6).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b8.setText (lista.get(7) != null ? lista.get(7).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b9.setText (lista.get(8) != null ? lista.get(8).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b10.setText(lista.get(9) != null ? lista.get(9).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b11.setText(lista.get(10) != null ? lista.get(10).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b12.setText(lista.get(11) != null ? lista.get(11).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b13.setText(lista.get(12) != null ? lista.get(12).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b14.setText(lista.get(13) != null ? lista.get(13).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b15.setText(lista.get(14) != null ? lista.get(14).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
+        b16.setText(lista.get(15) != null ? lista.get(15).toString() : "");/*realiza a escriata dos valores no botão, verificando primeiro se o valor 
+        na lista está vazio, caso não esteja nullo tranforma o valor inteiro em string, 
+        e caso esteja nullo é tranformado em uma string vazia*/
         
-        nj = 0;
-        imprimeNj();
-        impossivel();
+        nj = 0; //número de jogadas é zerado, pois o jogo será iniciado
+        imprimeNj(); // aciona a função para imprimir o número de jogadas
+        impossivel(); // verifica se a cnfiguração atual é impossível
         
        
         
     }
     
-    public void verificarVitoria(){
+    public void verificarVitoria(){ // método do tipo void voltado a verificar se o jogador venceu o jogo
         Boolean verifica = true; // valor para verificação de vitoria
-        for(int i = 1; i < 16;i++){
+        for(int i = 1; i < 16;i++){ //laço para verificar cada item da lista 
             String si;
             si = Integer.toString(i);
             if(idBotao(i).getText().equals(si)){
