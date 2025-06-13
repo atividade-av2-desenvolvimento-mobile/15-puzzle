@@ -4,11 +4,13 @@
  */
 package quebracabeca;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import java.util.Timer;
+
 
 /**
  *
@@ -21,6 +23,9 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     int nj=0; //numero de jogadas
     int ne =0; //numero de embaralhamentos
     int nt = 0; //numero de tentativas
+    Segundo segundo;
+    Thread seg;
+  
     
     
     
@@ -35,6 +40,10 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
      */
     public quebracabecaJFRAME() {
         initComponents();
+        segundo = new Segundo();
+        seg = new Thread(segundo);
+        seg.start();
+        
         
     }
 
@@ -68,7 +77,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         qinversoes = new javax.swing.JLabel();
         nLinha = new javax.swing.JLabel();
         lateral = new javax.swing.JLabel();
-        timer = new javax.swing.JLabel();
+        tempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -205,8 +214,9 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         getContentPane().add(nLinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 300, 20));
         getContentPane().add(lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, 390));
 
-        timer.setText("timer");
-        getContentPane().add(timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 10, 300, -1));
+        tempo.setText("0");
+        tempo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(tempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 70, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -458,9 +468,9 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         embaralhos.setText("O número de re-embaralhamentos foi: "+ne);
     }
     
-    public void imprimeTempo(){
-        timer.setText("timer: "+timer);
-    }
+    
+    
+   
     
     
     public void impossivel(){
@@ -537,7 +547,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new quebracabecaJFRAME().setVisible(true);
-                Timer timer = new Timer();
+                
             }
         });
     }
@@ -564,7 +574,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { // é uma herança,
     private javax.swing.JLabel lateral;
     private javax.swing.JLabel nLinha;
     private javax.swing.JLabel qinversoes;
-    private javax.swing.JLabel timer;
+    public static javax.swing.JLabel tempo;
     // End of variables declaration//GEN-END:variables
     
 
