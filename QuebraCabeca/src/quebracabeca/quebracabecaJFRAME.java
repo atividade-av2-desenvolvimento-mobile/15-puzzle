@@ -464,22 +464,28 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
     public void verificarVitoria(){ // método do tipo void voltado a verificar se o jogador venceu o jogo
         Boolean verifica = true; // valor para verificação de vitoria
         for(int i = 1; i < 16;i++){ //laço para verificar cada item da lista 
-            String si;
-            si = Integer.toString(i);
-            if(idBotao(i).getText().equals(si)){
-                verifica = true;
-            }else if(!idBotao(i).getText().equals(si)){
-                //nt++;
-                verifica = false;
-                //lateral.setText(""+nt);
-                break;
+            String si; //declaração de variavel do tipo string chamada si para comparação
+            si = Integer.toString(i); //transforma o valor de i que controla o laço em string e armazena em si
+            if(idBotao(i).getText().equals(si)){ /*condicional para validar se o valor presente no botão na casa 
+                correspondente ao número i é igual ao valor si*/
+                verifica = true; /* enquanto cada item dos botões do jogo bater com o número esperado para estar nele, 
+                /o valor permanece true*/
+            }else if(!idBotao(i).getText().equals(si)){ /*condicional para verificar se o valor presente no 
+                botão não é correspondente ao esperado*/
+                //nt++; //linha usada para testes
+                verifica = false; /*caso qualquer um dos botões não tenha seu numero 
+                correspondente ele coloca a variável de validação como falso*/
+                //lateral.setText(""+nt); //linha usada para testes
+                break; // o laço é interrompido caso qualquer não tenha seu número correspondente
                 
                 
             }
         }
-        if(verifica == true && nj>0){
-            JOptionPane.showMessageDialog(null, "Parabéns você completou o puzzle","Resultado",1);
-            embaralhar();
+        if(verifica == true && nj>0){ /* condicional para verificar se a todos os botões estão com os
+            números esperados e se o jogador fez algum movimento*/
+            JOptionPane.showMessageDialog(null, "Parabéns você completou o puzzle","Resultado",1); /*mostra um caixa de pop-up com 
+            essa mensagem, com titulo de resultado*/
+            embaralhar(); // quando jogo termina ele recomeça, chamando o inicio do código de novo
         }
         
       
