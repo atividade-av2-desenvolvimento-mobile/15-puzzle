@@ -491,14 +491,15 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
       
     }
     
-    public void imprimeNj(){
-        jogadas1.setText("O número de jogadas foi: "+nj);
+    public void imprimeNj(){ //método para imprimir o número de jogadas
+        jogadas1.setText("O número de jogadas foi: "+nj); //impressão do número e jogadas na label
         
         
     }
     
-    public void imprimeNe(){
-        embaralhos.setText("O número de re-embaralhamentos foi: "+ne);
+    public void imprimeNe(){ //método para imprimir o número de vezes que foi embaralhado 
+        embaralhos.setText("O número de re-embaralhamentos foi: "+ne); /*impressão da quantidade de vezes
+        que foi embaralhado*/
     }
     
     
@@ -509,42 +510,52 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
     public void impossivel(){
         int ninversoes = 0; //numero de inversões
         int pvazia=0; //posição do botao vazio no começo do jogo
-        int nlinha = 0; //numero da linha onde fica o botão vazio no começo do jogo
+        int nlinha = 0; /*numero da linha onde fica o botão vazio no 
+        começo do jogo contando de baixo para cima*/
         int verifica = 0; // valor usado para verificar condição de possibildiade de vitoria
-        for(int i = 0; i < 16; i++){
-            for(int j =i +1; j < 16; j++){
-                if(lista.get(j) != null && lista.get(i) != null){
-                    if(lista.get(i) > lista.get(j)){
-                     ninversoes +=1;
+        for(int i = 0; i < 16; i++){ //laço para ler desde o primeiro item da lista até o último 
+            for(int j =i +1; j < 16; j++){ /* laço para ler o próximo item depois daquele 
+                que está na posição i*/
+                if(lista.get(j) != null && lista.get(i) != null){ /*condicional que verifica se o item 
+                    e o próximo item após ele são vazios*/
+                    if(lista.get(i) > lista.get(j)){ /*condicional que verifica se o número no 
+                        index i é maior que o número no index j*/
+                     ninversoes +=1; //adiciona mais um no número de inversões 
                     } 
-                }else if(lista.get(j) == null){
-                    pvazia = j;
+                }else if(lista.get(j) == null){ //se o item na posição j for um valor null
+                    pvazia = j; // coloca o índice da posição do botão vazio na variável pvazia
                 }
                     
             }
         }
-        qinversoes.setText("Quantidade de inversões: "+ninversoes);
+        qinversoes.setText("Quantidade de inversões: "+ninversoes); //impressão do número de inversões
         
-        if(pvazia >=0 && pvazia <= 3){
-            nlinha = 4;
+        if(pvazia >=0 && pvazia <= 3){ /*condicional para verificar se o índice da casa com null está 
+            entre 0 e 3 que indicariam que ela está na linha 4 quando lido de baixo para cima*/
+            nlinha = 4; //declara que a linha com a casa vazia é a linha 4
         }
-        if(pvazia >=4 && pvazia <= 7){
-            nlinha = 3;
+        if(pvazia >=4 && pvazia <= 7){/*condicional para verificar se o índice da casa com null está 
+            entre 4 e 7 que indicariam que ela está na linha 3 quando lido de baixo para cima*/
+            nlinha = 3; //declara que a linha com a casa vazia é a linha 3
         }
-        if(pvazia >=8 && pvazia <= 11){
-            nlinha = 2;
+        if(pvazia >=8 && pvazia <= 11){/*condicional para verificar se o índice da casa com null está 
+            entre 8 e 11 que indicariam que ela está na linha 2 quando lido de baixo para cima*/
+            nlinha = 2; //declara que a linha com a casa vazia é a linha 2
         }
-        if(pvazia >=12 && pvazia <= 15){
-            nlinha = 1;
+        if(pvazia >=12 && pvazia <= 15){ /*condicional para verificar se o índice da casa com null está 
+            entre 12 e 15 que indicariam que ela está na linha 1 quando lido de baixo para cima*/
+            nlinha = 1;//declara que a linha com a casa vazia é a linha 1
         }
-        nLinha.setText("Número invertido da linha com a casa vazia: "+nlinha);
-        verifica = ninversoes+nlinha;
-        if(verifica%2 ==0){
-            embaralhar();
-            ne ++;
+        nLinha.setText("Número invertido da linha com a casa vazia: "+nlinha); /*impressão da posição 
+        da linha vista de baixo para cima de onde está o botão vazio*/
+        verifica = ninversoes+nlinha; /*a variavel verifica recebe a soma do 
+        número de inversões e a linha onde está o botão vazio*/
+        if(verifica%2 ==0){ //condicional para testar se a variável verifica é par
+            embaralhar(); // caso a variável verifica for par o jogo é reembaralhado
+            ne ++; //acrecenta mais 1 no número de embaralhos
         }
         
-        imprimeNe();
+        imprimeNe(); //chamada do método de impressão do número de embaralhamentos
         
         
         
@@ -553,7 +564,7 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) { //declaração do método main
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -577,9 +588,11 @@ public class quebracabecaJFRAME extends javax.swing.JFrame { //declaração de q
         }
         //</editor-fold>
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new quebracabecaJFRAME().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() { /*cria um método runnable para executar na 
+            ocorrencia de uma evento que é a execução do código*/
+            public void run() { //cria um método para execução
+                new quebracabecaJFRAME().setVisible(true); /*executa o método construtor de 
+                quebracabeca deixando a janela gerada por ele como visível*/
                 
             }
         });
